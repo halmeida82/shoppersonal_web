@@ -39,7 +39,7 @@ const Header = props => {
           noWrap
           className={classes.title}
         >
-          SHOPPERsonal
+          001 - West Avenue Store
         </Typography>
         <IconButton color="inherit">
           Store Manager&nbsp;<PersonIcon />
