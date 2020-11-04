@@ -1,0 +1,31 @@
+[
+    {
+      priority:'green', userNumber:5700, 
+      recommendations:
+      [
+        {code:123456, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38', zone:'Mens Casual'},
+        {code:789015, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique', zone:'Main Counter'}
+      ], 
+      conversion:15,
+      ats: 25,
+      pastPurchases: 
+        [
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42'}
+        ]
+      },
+    {
+      priority:'gold', userNumber:8394, 
+      recommendations: 
+      [
+        {code:998652, desc:'Metallic strap sandals', category:'high-heels',color:'Silver', size:'6', zone:'Women Shoes'},
+        {code:484264, desc:'Satin shirt dress',category:'dress', color:'Aqua Green', size:'12', zone:'Women Dress'}
+      ], 
+      conversion:5, 
+      ats:10,
+      pastPurchases: 
+        [
+          {code:541575, desc:'Boat neck knit dress', category:'dress',color:'White', size:'12'}
+        ]
+    }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    priority:'gold', 
+    userNumber:2687, 
+    recommendations:
+    [
+      {code:954134, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38',sold:false},
+      {code:132785, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique',sold:false}
+    ], 
+    conversion:false, 
+    ats:0, 
+    contact:false, 
+    boughtPerc:0,
+    purchase:[]
+},
+{
+  priority:'green',
+  userNumber: 1256, 
+  recommendations:
+  [
+    {code:564642, desc:'Leather strass straps sandals', category:'high-heels',color:'Black', size:'6',sold:false},
+    {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12',sold:true}
+  ],
+  conversion: true,
+  ats: 117,
+  contact:true, 
+  boughtPerc:65,
+  purchase: 
+  [
+    {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12'}    
+  ]
+}
+]
