@@ -28,8 +28,26 @@ import { ReactComponent as CapIcon } from  '../../assets/016-cap.svg';
 import { ReactComponent as ManIcon } from  '../../assets/man.svg';
 import { ReactComponent as WomanIcon } from  '../../assets/woman.svg';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import EditIcon from '@material-ui/icons/Edit';
+import DoneIcon from '@material-ui/icons/Done';
+import CloseIcon from '@material-ui/icons/Close';
 import SvgIcon from '@material-ui/core/SvgIcon';
+import AddIcon from '@material-ui/icons/Add';
 import Divider from '@material-ui/core/Divider';
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
+import TablePagination from '@material-ui/core/TablePagination';
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import ListItemText from "@material-ui/core/ListItemText";
+import EventIcon from '@material-ui/icons/Event';
+import TextField from '@material-ui/core/TextField';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
+
+
 
 const useStyles = makeStyles({
   table: {
@@ -65,8 +83,8 @@ const rows =
       category:'generationX',
       lastPurchase: 
         [
-          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M',rec:true},
-          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42',rec:false}
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M',rec:true,price:'35',when:'15 minutes ago'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42',rec:false,price:'79.99',when:'2 days ago'}
         ]
       ,
       lastMonthKPI: {
@@ -80,13 +98,13 @@ const rows =
       },
       last3MonthsKPI: {
         numVisits:6,
-        conversion:33,
+        conversion:33.3,
         ats:198,
         categoryATS: [
-          { category: 'Tshirt', value: 20},
+          { category: 'Tshirt', value: 19.99},
           { category: 'Pants', value: 44},
           { category: 'Tie', value: 35},
-          { category: 'Watch', value: 99}
+          { category: 'Watch', value: 99.99}
         ]
       }
     },
@@ -104,24 +122,126 @@ const rows =
         ats:174,
         categoryATS: [
           { category: 'Earrings', value: 10},
-          { category: 'Skirt', value: 34},
+          { category: 'Skirt', value: 34.99},
           { category: 'Dress', value: 114}
         ]
       },
       last3MonthsKPI: {
         numVisits:5,
-        conversion:33,
+        conversion:33.3,
         ats:234,
         categoryATS: [
-          { category: 'Earrings', value: 10},
+          { category: 'Earrings', value: 9.99},
           { category: 'Skirt', value: 46},
           { category: 'Dress', value: 114},
-          { category: 'Tshirt', value: 40},
+          { category: 'Tshirt', value: 40.99},
           { category: 'Pants', value: 40}
+        ]
+      }
+    },
+    {
+      priority:'gold', 
+      userNumber:56544, 
+      gender:'male',
+      category:'generationX',
+      lastPurchase: 
+        [
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M',rec:false,price:'35',when:'22 minutes ago'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42',rec:true,price:'79.99',when:'3 weeks ago'}
+        ]
+      ,
+      lastMonthKPI: {
+        numVisits:2,
+        conversion:50,
+        ats:64,
+        categoryATS: [
+          { category: 'Tshirt', value: 20},
+          { category: 'Pants', value: 44}
+        ]
+      },
+      last3MonthsKPI: {
+        numVisits:6,
+        conversion:33.3,
+        ats:198,
+        categoryATS: [
+          { category: 'Tshirt', value: 19.99},
+          { category: 'Pants', value: 44},
+          { category: 'Tie', value: 35},
+          { category: 'Watch', value: 99.99}
+        ]
+      }
+    },
+    {
+      priority:'gold', 
+      userNumber:95652, 
+      gender:'male',
+      category:'generationX',
+      lastPurchase: 
+        [
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M',rec:true,price:'35',when:'43 minutes ago'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42',rec:true,price:'79.99',when:'43 minutes ago'}
+        ]
+      ,
+      lastMonthKPI: {
+        numVisits:2,
+        conversion:50,
+        ats:64,
+        categoryATS: [
+          { category: 'Tshirt', value: 20},
+          { category: 'Pants', value: 44}
+        ]
+      },
+      last3MonthsKPI: {
+        numVisits:6,
+        conversion:33.3,
+        ats:198,
+        categoryATS: [
+          { category: 'Tshirt', value: 19.99},
+          { category: 'Pants', value: 44},
+          { category: 'Tie', value: 35},
+          { category: 'Watch', value: 99.99}
+        ]
+      }
+    },
+    {
+      priority:'gold', 
+      userNumber:48448, 
+      gender:'male',
+      category:'generationX',
+      lastPurchase: 
+        [
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M',rec:false,price:'35',when:'1 hour ago'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42',rec:false,price:'79.99',when:'2 weeks ago'}
+        ]
+      ,
+      lastMonthKPI: {
+        numVisits:2,
+        conversion:50,
+        ats:64,
+        categoryATS: [
+          { category: 'Tshirt', value: 20},
+          { category: 'Pants', value: 44}
+        ]
+      },
+      last3MonthsKPI: {
+        numVisits:6,
+        conversion:33.3,
+        ats:198,
+        categoryATS: [
+          { category: 'Tshirt', value: 19.99},
+          { category: 'Pants', value: 44},
+          { category: 'Tie', value: 35},
+          { category: 'Watch', value: 99.99}
         ]
       }
     }
   ];
+
+  function formatDollars(amount) {
+    return `${parseFloat(amount).toFixed(2)} $`;
+  }
+
+  function handleDelete(){}
 
 export default function Shoppers() {
 
@@ -129,8 +249,59 @@ export default function Shoppers() {
 
   return (
   <div>
-    <Typography variant="h5" className={classes.mainTitle}>SHOPPERS</Typography>
+    <Typography variant="h5" className={classes.mainTitle}>SHOPPERS <Button startIcon={<AddIcon />}variant="outlined" color="primary" style={{position:'absolute',right:20}}>Add new Shopper</Button></Typography>
+    
     <Card>
+      <CardContent>
+        <Typography className={classes.title}>
+          Filters
+        </Typography>
+        <List>
+          <ListItem>
+            <ListItemIcon>
+              <LoyaltyIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Priority" />
+            <ListItemSecondaryAction>
+              <Chip variant="outlined" color="primary" icon={<FaceIcon style={{color:'green'}}/>} label="VIP" deleteIcon={<DoneIcon />} onDelete={handleDelete}/>
+              <Chip variant="outlined" color="primary" icon={<FaceIcon style={{color:'gold'}}/>} label="Standard" style={{marginLeft:20,marginRight:20}} deleteIcon={<DoneIcon />} onDelete={handleDelete}/>
+              <Chip variant="outlined" color="primary" icon={<FaceIcon style={{color:'gray'}}/>} label="Ocasional" deleteIcon={<CloseIcon />} onDelete={handleDelete}/>
+            </ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <EventIcon />
+            </ListItemIcon>
+            <ListItemText primary="With purchases" />
+            <ListItemSecondaryAction>
+            <TextField
+              id="date1"
+              label="From"
+              type="date"
+              defaultValue="2020-07-01"
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+            />
+            <TextField
+              id="date2"
+              label="To"
+              type="date"
+              defaultValue="2020-09-30"
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              style={{marginLeft:50}}
+            />
+            </ListItemSecondaryAction>
+          </ListItem>
+        </List>
+      </CardContent>
+    </Card>
+
+    <Card style={{marginTop:40}}>
       <CardContent>
         <Typography className={classes.title}>
           Shoppers
@@ -144,6 +315,7 @@ export default function Shoppers() {
                 <TableCell align="center">Last Purchase</TableCell>
                 <TableCell align="center">KPIs Last Month</TableCell>
                 <TableCell align="center">KPIs Last 3 Months</TableCell>
+                <TableCell align="center">Edit</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -171,7 +343,7 @@ export default function Shoppers() {
                       }
                     <div style={{display:'table'}}>                      
                       {row.lastPurchase.map((purchase) => (
-                        <div style={{width:'100%',display:'table-row', marginBottom:10,height:100,color:purchase.rec ?'green':''}} align="center">
+                        <div style={{width:'100%',display:'table-row', marginBottom:10,height:100,color:purchase.rec ?'green':'',fontWeight:purchase.rec ?'bold':'normal'}} align="center">
                           <div style={{float:'left'}}>
                             {purchase.category==='slippers' &&
                               <SvgIcon component={SlippersIcon} viewBox="0 0 480 480" className={classes.recIcon}/>
@@ -225,7 +397,8 @@ export default function Shoppers() {
                           <div style={{float:'left',textAlign:'left'}}>
                             <div>Ref. {purchase.code}</div>
                             <div>{purchase.desc}</div>
-                            <div>{purchase.color} | {purchase.size}</div>
+                            <div>{purchase.color} | {purchase.size} | {formatDollars(purchase.price)}</div>
+                            <div>Purchased {purchase.when}</div>
                           </div>
                         </div>                      
                       ))}
@@ -241,18 +414,18 @@ export default function Shoppers() {
                     <Divider style={{margin:10}}/>
                     <div className={classes.kpi}>
                       <div>Conversion</div>
-                      <div>{row.lastMonthKPI.conversion}%</div>
+                      <div>{row.lastMonthKPI.conversion} %</div>
                     </div>
                     <div className={classes.kpi}>
                       <div>ATS</div>
-                      <div>{row.lastMonthKPI.ats}$</div>
+                      <div>{formatDollars(row.lastMonthKPI.ats)}</div>
                     </div>
                     <div style={{clear:'both'}}></div>
                     <Divider style={{margin:10,clear:'both'}}/>
                     <div>
                       {row.lastMonthKPI.categoryATS.map((categoryATS) => (
                         <div>
-                          <span>{categoryATS.category} - {categoryATS.value}$</span>
+                          <span>{categoryATS.category} - {formatDollars(categoryATS.value)}</span>
                         </div>
                       ))}
                     </div>
@@ -267,27 +440,39 @@ export default function Shoppers() {
                     <Divider style={{margin:10}}/>
                     <div className={classes.kpi}>
                       <div>Conversion</div>
-                      <div>{row.last3MonthsKPI.conversion}%</div>
+                      <div>{row.last3MonthsKPI.conversion} %</div>
                     </div>
                     <div className={classes.kpi}>
                       <div>ATS</div>
-                      <div>{row.last3MonthsKPI.ats}$</div>
+                      <div>{formatDollars(row.last3MonthsKPI.ats)}</div>
                     </div>
                     <div style={{clear:'both'}}></div>
                     <Divider style={{margin:10,clear:'both'}}/>
                     <div>
                       {row.last3MonthsKPI.categoryATS.map((categoryATS) => (
                         <div>
-                          <span>{categoryATS.category} - {categoryATS.value}$</span>
+                          <span>{categoryATS.category} - {formatDollars(categoryATS.value)}</span>
                         </div>
                       ))}
                     </div>
+                  </TableCell>
+                  <TableCell>
+                    <Link>
+                    <EditIcon/>
+                    </Link>
                   </TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={91567}
+          rowsPerPage={5}
+          page={0}
+        />
       </CardContent>
     </Card>
   </div>);

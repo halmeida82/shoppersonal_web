@@ -17,6 +17,7 @@ import ReceiptIcon from '@material-ui/icons/Receipt';
 import AllInboxIcon from '@material-ui/icons/AllInbox';
 import AlarmOnIcon from '@material-ui/icons/AlarmOn';
 import TrafficIcon from '@material-ui/icons/Traffic';
+import VideocamIcon from '@material-ui/icons/Videocam';
 import Slider from '@material-ui/core/Slider';
 import Select from '@material-ui/core/Select';
 import FormControl from '@material-ui/core/FormControl';
@@ -361,6 +362,23 @@ export default function Configuration() {
                   value="1"
                 >
                   <MenuItem value={1}>Shoppertrak</MenuItem>
+                </Select>
+              </FormControl>
+            </ListItemSecondaryAction>
+          </ListItem>
+          <ListItem>
+            <ListItemIcon>
+              <VideocamIcon />
+            </ListItemIcon>
+            <ListItemText primary="Cameras" />
+            <ListItemSecondaryAction>
+            <FormControl className={classes.integrationSelect}>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value="1"
+                >
+                  <MenuItem value={1}>CCTV</MenuItem>
                 </Select>
               </FormControl>
             </ListItemSecondaryAction>

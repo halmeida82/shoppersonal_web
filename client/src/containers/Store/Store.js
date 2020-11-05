@@ -46,52 +46,53 @@ const useStyles = makeStyles({
     marginRight:10
   },
   recommendationSold: {
-    color:'green'
+    color:'green',
+    fontWeight:"bolder"
   }
 });
 
-const rows = 
+const currentlySalesFloor = 
   [
     {
       priority:'green', userNumber:5700, 
       recommendations:
       [
-        {code:123456, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38', zone:'Mens Casual'},
-        {code:789015, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique', zone:'Main Counter'}
+        {code:123456, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38', zone:'Mens Casual',price:'39.99'},
+        {code:789015, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique', zone:'Main Counter',price:'99.99'}
       ], 
       conversion:15,
-      ats: 25,
+      ats: 125,
       pastPurchases: 
         [
-          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M'},
-          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42'}
+          {code:514555, desc:'Regular fit checked flannel shirt', category:'shirt',color:'Dark Navy', size:'M', price:'35',when:'yesterday'},
+          {code:554595, desc:'Leather penny loafers',category:'shoe', color:'Brown', size:'42', price:'79.99', when:'2 weeks ago'}
         ]
       },
     {
       priority:'gold', userNumber:8394, 
       recommendations: 
       [
-        {code:998652, desc:'Metallic strap sandals', category:'high-heels',color:'Silver', size:'6', zone:'Women Shoes'},
-        {code:484264, desc:'Satin shirt dress',category:'dress', color:'Aqua Green', size:'12', zone:'Women Dress'}
+        {code:998652, desc:'Metallic strap sandals', category:'high-heels',color:'Silver', size:'6', zone:'Women Shoes',price:'35'},
+        {code:484264, desc:'Satin shirt dress',category:'dress', color:'Aqua Green', size:'12', zone:'Women Dress',price:'49,99'}
       ], 
       conversion:5, 
       ats:10,
       pastPurchases: 
         [
-          {code:541575, desc:'Boat neck knit dress', category:'dress',color:'White', size:'12'}
+          {code:541575, desc:'Boat neck knit dress', category:'dress',color:'White', size:'12',price:'59.99',when:'45 days ago'}
         ]
     }
   ];
 
-const rowsVisits = 
+const lastVisits = 
   [
     {
       priority:'gold', 
       userNumber:2687, 
       recommendations:
       [
-        {code:954134, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38',sold:false},
-        {code:132785, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique',sold:false}
+        {code:954134, desc:'Skinny dark wash Jude jeans', category:'pants',color:'Light Blue', size:'38',sold:false, price:'39.99'},
+        {code:132785, desc:'Supersport Chrono',category:'watch', color:'Silver', size:'Unique',sold:false, price:'99.99'}
       ], 
       conversion:false, 
       ats:0, 
@@ -104,8 +105,8 @@ const rowsVisits =
     userNumber: 1256, 
     recommendations:
     [
-      {code:564642, desc:'Leather strass straps sandals', category:'high-heels',color:'Black', size:'6',sold:false},
-      {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12',sold:true}
+      {code:564642, desc:'Leather strass straps sandals', category:'high-heels',color:'Black', size:'6',sold:false, price:'49,99'},
+      {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12',sold:true,price:'70'}
     ],
     conversion: true,
     ats: 117,
@@ -113,10 +114,14 @@ const rowsVisits =
     boughtPerc:65,
     purchase: 
     [
-      {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12'}    
+      {code:687626, desc:'Belted cupro dress',category:'dress', color:'Aqua Green', size:'12',price:'70'}    
     ]
   }
 ];
+
+function formatDollars(amount) {
+  return `${parseFloat(amount).toFixed(2)} $`;
+}
 
 export default function Store() {
 
@@ -128,7 +133,7 @@ export default function Store() {
     <Card>
       <CardContent>
         <Typography className={classes.title}>
-          Currently at the sales floor ({rows.length})
+          Currently at the sales floor ({currentlySalesFloor.length})
         </Typography>
         <TableContainer>
           <Table className={classes.table} aria-label="simple table">
@@ -142,7 +147,7 @@ export default function Store() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {currentlySalesFloor.map((row) => (
                 <TableRow key={row.userNumber}>
                   <TableCell component="th" scope="row" align="center">
                     <div>
@@ -158,7 +163,8 @@ export default function Store() {
                     <TableCell align="center">
                   <div style={{display:'table'}}>
                       {row.pastPurchases.map((purchase) => (
-                        <div style={{width:'100%',display:'table-row', marginBottom:10,height:100}} align="center">
+                        <div style={{width:'100%',display:'table-row', marginBottom:5,height:100}} align="center">
+                          
                           <div style={{float:'left'}}>
                             {purchase.category==='slippers' &&
                               <SvgIcon component={SlippersIcon} viewBox="0 0 480 480" className={classes.recIcon}/>
@@ -212,15 +218,16 @@ export default function Store() {
                           <div style={{float:'left',textAlign:'left'}}>
                             <div>Ref. {purchase.code}</div>
                             <div>{purchase.desc}</div>
-                            <div>{purchase.color} | {purchase.size}</div>
+                            <div>{purchase.color} | {purchase.size} | {formatDollars(purchase.price)}</div>                            
+                            <div>Purchased {purchase.when}</div>
                           </div>
                         </div>                      
                       ))}
                     </div>
                   </TableCell>
-                  <TableCell align="center">Conversion {row.conversion}%
+                  <TableCell align="center">Conversion {row.conversion} %
                   <Divider style={{margin:10}}/>
-                  ATS {row.ats}$</TableCell>
+                  ATS {formatDollars(row.ats)}</TableCell>
                   <TableCell align="center" >
                     <div style={{display:'table'}}>
                       {row.recommendations.map((recommendation) => (
@@ -278,7 +285,7 @@ export default function Store() {
                           <div style={{float:'left',textAlign:'left'}}>
                             <div>Ref. {recommendation.code}</div>
                             <div>{recommendation.desc}</div>
-                            <div>{recommendation.color} | {recommendation.size}</div>
+                            <div>{recommendation.color} | {recommendation.size} | {formatDollars(recommendation.price)} </div>
                             <div>Available @ {recommendation.zone}</div>
                           </div>
                         </div>                      
@@ -311,7 +318,7 @@ export default function Store() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rowsVisits.map((row) => (
+              {lastVisits.map((row) => (
                 <TableRow key={row.userNumber}>
                   <TableCell component="th" scope="row" align="center">
                     <div>
@@ -327,7 +334,7 @@ export default function Store() {
                     <TableCell align="center">
                   <div style={{display:'table'}}>
                       {row.recommendations.map((recommendation) => (
-                        <div style={{width:'100%',display:'table-row', marginBottom:10,height:100,color:recommendation.sold ?'green':''}} align="center">
+                        <div style={{width:'100%',display:'table-row', marginBottom:10,height:100,color:recommendation.sold ?'green':'',fontWeight:recommendation.sold?'bold':'normal'}} align="center">
                           <div style={{float:'left'}}>
                             {recommendation.category==='slippers' &&
                               <SvgIcon component={SlippersIcon} viewBox="0 0 480 480" className={classes.recIcon}/>
@@ -381,7 +388,7 @@ export default function Store() {
                           <div style={{float:'left',textAlign:'left'}}>
                             <div>Ref. {recommendation.code}</div>
                             <div>{recommendation.desc}</div>
-                            <div>{recommendation.color} | {recommendation.size}</div>
+                            <div>{recommendation.color} | {recommendation.size} | {formatDollars(recommendation.price)}</div>
                           </div>
                         </div>                      
                       ))}
@@ -399,7 +406,7 @@ export default function Store() {
                     <Divider style={{margin:10}}/>
                     <div>ATS</div>
                     <div>{row.ats > 0 && 
-                      <span>{row.ats} $</span>
+                      <span>{formatDollars(row.ats)}</span>
                     }
                     {!row.ats && 
                       <span>-</span>
@@ -418,7 +425,7 @@ export default function Store() {
                         
                           {row.boughtPerc >0 && 
                           <div>
-                            <div>Conversion</div>
+                            <div>Success</div>
                             <span>{row.boughtPerc}%</span>
                           </div>
                           }
@@ -481,7 +488,7 @@ export default function Store() {
                           <div style={{float:'left',textAlign:'left'}}>
                             <div>Ref. {purchase.code}</div>
                             <div>{purchase.desc}</div>
-                            <div>{purchase.color} | {purchase.size}</div>
+                            <div>{purchase.color} | {purchase.size} | {formatDollars(purchase.price)}</div>
                           </div>
                         </div>                      
                       ))}
