@@ -20,6 +20,7 @@ import { ReactComponent as SuitIcon } from  '../../assets/013-suit.svg';
 import { ReactComponent as PantsIcon } from  '../../assets/009-pants.svg';
 import { ReactComponent as HighHeelsIcon } from  '../../assets/011-high-heels.svg';
 import LoyaltyIcon from '@material-ui/icons/Loyalty';
+import ArrowDropUpIcon from '@material-ui/icons/ArrowDropUp';
 import { ReactComponent as ManIcon } from  '../../assets/man.svg';
 import { ReactComponent as WomanIcon } from  '../../assets/woman.svg';
 import {
@@ -304,7 +305,6 @@ export default function Reports() {
             </CardContent>
           </Card>
         </Grid>
-
         <Grid item xs={6}>
           <Card style={{marginTop:0}}>
             <CardContent className={classes.reportCard}>
@@ -331,6 +331,72 @@ export default function Reports() {
                 <Title text="Loyal vs Total Shoppers Attendance by Hour of the day" />
                 <Stack />
               </Chart>
+            </CardContent>
+          </Card>
+        </Grid>
+        
+        <Grid item xs={4}>
+          <Card>
+            <CardContent className={classes.reportCard}>
+              <Typography className={classes.bigNumber} style={{marginTop:36}}>
+                216
+              </Typography>
+
+              <div className={classes.trendingUp}>                
+                <TrendingUpIcon style={{fontSize:40}}/><span className={classes.trendingText}>&nbsp;5.3 %</span>
+              </div>
+              
+              <div className={classes.trendingUpText}>                
+                <span className={classes.trendingText}>24 % of Total Traffic (</span><ArrowDropUpIcon style={{fontSize:40, color:'green'}}/><span className={classes.trendingText}>1.2 %)</span>
+              </div>
+
+              <Typography className={classes.title}>
+                Traffic Loyals
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Card>
+            <CardContent className={classes.reportCard}>
+              <Typography className={classes.bigNumber} style={{marginTop:36}}>
+                4.5 %
+              </Typography>
+
+              <div className={classes.trendingUp}>                
+                <TrendingUpIcon style={{fontSize:40}}/><span className={classes.trendingText}>&nbsp;0.8pp</span>
+              </div>
+              
+              <div className={classes.trendingUpText}>                
+                <span className={classes.trendingText}>2.1 % of Total Conversion (</span><ArrowDropUpIcon style={{fontSize:40, color:'green'}}/><span className={classes.trendingText}>0.1pp)</span>
+              </div>
+
+              <Typography className={classes.title}>
+                Conversion Loyals
+              </Typography>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={4}>
+          <Card>
+            <CardContent className={classes.reportCard}>
+              <Typography style={{marginTop:36,fontSize:67,lineHeight:'120px'}}>
+                143.00 $
+              </Typography>
+
+              <div className={classes.trendingUp}>                
+                <TrendingUpIcon style={{fontSize:40}}/><span className={classes.trendingText}>&nbsp;3.2 %</span>
+              </div>
+              
+              <div className={classes.trendingUpText}>                
+                <span className={classes.trendingText}>85.00 $ Total ATS (</span><ArrowDropUpIcon style={{fontSize:40, color:'green'}}/><span className={classes.trendingText}>2,0 %)</span>
+              </div>
+
+              <Typography className={classes.title}>
+                ATS Loyals
+              </Typography>
             </CardContent>
           </Card>
         </Grid>
