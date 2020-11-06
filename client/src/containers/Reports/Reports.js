@@ -537,7 +537,7 @@ export default function Reports() {
               </Typography>
               <Grid container spacing={3}>
                 <Grid item xs={6}>
-                  <Typography className={classes.title}>VIP</Typography>
+                  <Typography className={classes.title}>Male</Typography>
                   <SvgIcon component={ManIcon} viewBox="0 0 480 480" className={classes.recIcon}/>
                   <Typography className={classes.mediumNumber}>28 %</Typography>
                   <div className={classes.trendingUp}>                
@@ -545,7 +545,7 @@ export default function Reports() {
                   </div>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography className={classes.title}>Standard</Typography>
+                  <Typography className={classes.title}>Female</Typography>
                   <SvgIcon component={WomanIcon} viewBox="0 0 480 480" className={classes.recIcon}/>
                   <Typography className={classes.mediumNumber}>16 %</Typography>
                   <div className={classes.trendingUp}>                
