@@ -32,10 +32,8 @@ import EditIcon from '@material-ui/icons/Edit';
 import DoneIcon from '@material-ui/icons/Done';
 import CloseIcon from '@material-ui/icons/Close';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import AddIcon from '@material-ui/icons/Add';
 import Divider from '@material-ui/core/Divider';
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
 import TablePagination from '@material-ui/core/TablePagination';
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -46,8 +44,6 @@ import EventIcon from '@material-ui/icons/Event';
 import TextField from '@material-ui/core/TextField';
 import Chip from '@material-ui/core/Chip';
 import FaceIcon from '@material-ui/icons/Face';
-
-
 
 const useStyles = makeStyles({
   table: {
@@ -249,7 +245,7 @@ export default function Shoppers() {
 
   return (
   <div>
-    <Typography variant="h5" className={classes.mainTitle}>SHOPPERS <Button startIcon={<AddIcon />}variant="outlined" color="primary" style={{position:'absolute',right:20}}>Add new Shopper</Button></Typography>
+    <Typography variant="h5" className={classes.mainTitle}>SHOPPERS</Typography>
     
     <Card>
       <CardContent>
